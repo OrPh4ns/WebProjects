@@ -6,6 +6,8 @@ class calc
 private $num1;
 private $num2;
 private $operation;
+private $answer;
+private $res;
 
 public function setInfo($num1, $num2, $operation)
 {
@@ -14,28 +16,39 @@ public function setInfo($num1, $num2, $operation)
     $this->operation = $operation;
 
 }
+
 public function doCalc(){
     try {
         switch ($this->operation) {
             case "1":
-                return $this->num1 + $this->num2;
+                $this->res = $this->num1 + $this->num2;
+                $this->answer= '<div class="alert alert-success" role="alert">Ergebnis >> '.$this->res.'</div>';
                 break;
             case "2":
-                return $this->num1 - $this->num2;
+                $this->res = $this->num1 - $this->num2;
+                $this->answer= '<div class="alert alert-success" role="alert">Ergebnis >> '.$this->res.'</div>';
             case "3":
-                return $this->num1 * $this->num2;
+                $this->res = $this->num1 * $this->num2;
+                $this->answer= '<div class="alert alert-success" role="alert">Ergebnis >> '.$this->res.'</div>';
                 break;
             case "4":
-                return $this->num1 / $this->num2;
+                $this->res = $this->num1 / $this->num2;
+                $this->answer= '<div class="alert alert-success" role="alert">Ergebnis >> '.$this->res.'</div>';
                 break;
             default:
-                return "Bitte Wähle die OP aus | يرجى اختيار العلامه الرياضيه";
+            $this->answer= '<div class="alert alert-danger">
+  <strong>Danger!</strong> Bitte Wähle die OP aus | يرجى اختيار العلامه الرياضيه
+</div>';
                 {
                 }
         }
     }catch (Exception $ex){
-        return $ex->getMessage();
+        $this->answer= '<div class="alert alert-danger">
+  <strong>Danger!</strong>'.$ex->getMessage().'</div>';
+
     }
+
+    return $this->answer;
 }
 }
 

@@ -1,7 +1,8 @@
 <?php
 include_once "calc.php";
 $cal = new calc();
-
+//$cal->setInfo(2,2,1);
+//echo $cal->doCalc();
 ?>
 
 <html>
@@ -24,22 +25,19 @@ $cal = new calc();
 
         <div class="mb-4">
 
-            <input type="text" class="form-control" name="n1" placeholder="Die erste Nummer | الرقم الأول">
+            <input type="text" class="form-control" name="n1" placeholder="Die erste Nummer | الرقم الأول"style="width:500px";>
         </div>
         <div class="mb-3">
 
-            <input type="text" class="form-control" name="n2" placeholder="Die zweite Nummer | الرقم الثاني">
+            <input type="text" class="form-control" name="n2" placeholder="Die zweite Nummer | الرقم الثاني"style="width:500px";>
             <br>
 
-
-
-
-            <select class="form-select" aria-label="Default select example">
-                <option selected name="op">Wähle die Nummer und die Operation | إختار الارقام والعمليه الحسابيه</option>
-                <option name="1" value="1">+</option>
-                <option name="2" value="2">-</option>
-                <option name="3" value="3">*</option>
-                <option name="4" value="4">/</option>
+            <select class="form-select" style="width:200px"; name="op">
+                <option>Operation</option>
+                <option value="1">+</option>
+                <option value="2">-</option>
+                <option value="3">*</option>
+                <option value="4">/</option>
             </select>
 
             <br>
@@ -51,11 +49,11 @@ $cal = new calc();
     <?php
 
     if(isset($_POST['check'])){
-        $n1 = $_POST['n1'];
-        $n2 = $_POST['n2'];
-        $op = $_POST['op'];
-        //echo $cal->setInfo($n1,$n2,$op);
-        echo '<div class="alert alert-success" role="alert">'.$cal->setInfo($n1,$n2,$op).'</div>';
+
+
+
+        $cal->setInfo($_POST['n1'],$_POST['n2'],$_POST['op']);
+        echo $cal->doCalc();
     }{
 
     }
