@@ -49,9 +49,6 @@ $cal = new calc();
     <?php
 
     if(isset($_POST['check'])){
-
-
-
         $cal->setInfo($_POST['n1'],$_POST['n2'],$_POST['op']);
         echo $cal->doCalc();
     }{
